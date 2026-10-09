@@ -1,0 +1,10 @@
+.vscode/**
+.vscode-test/**
+test/**
+src/**
+coverage/**
+eslint.config.js
+vitest.config.ts
+.prettierrc.json
+package-lock.json
+tsconfig.json

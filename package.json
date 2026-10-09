@@ -1,0 +1,110 @@
+{
+  "name": "spider-code",
+  "displayName": "Spider Code",
+  "description": "Tiny spiders walk through your code and stop when they find errors.",
+  "version": "0.1.0",
+  "publisher": "publisher-placeholder",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "spiders",
+    "diagnostics",
+    "editor",
+    "fun"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package --allow-missing-repository"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "spiderCode.enable",
+        "title": "Spider Code: Enable"
+      },
+      {
+        "command": "spiderCode.disable",
+        "title": "Spider Code: Disable"
+      },
+      {
+        "command": "spiderCode.toggle",
+        "title": "Spider Code: Toggle"
+      },
+      {
+        "command": "spiderCode.addSpider",
+        "title": "Spider Code: Add Spider"
+      },
+      {
+        "command": "spiderCode.removeSpider",
+        "title": "Spider Code: Remove Spider"
+      },
+      {
+        "command": "spiderCode.resetSpiders",
+        "title": "Spider Code: Reset Spiders"
+      }
+    ],
+    "configuration": {
+      "title": "Spider Code",
+      "properties": {
+        "spiderCode.count": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "maximum": 50,
+          "description": "Number of spiders displayed in the editor."
+        },
+        "spiderCode.speed": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0.25,
+          "maximum": 4,
+          "description": "Spider movement speed multiplier."
+        },
+        "spiderCode.detectWarnings": {
+          "type": "boolean",
+          "default": false,
+          "description": "Let spiders target warning diagnostics as well as errors."
+        },
+        "spiderCode.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show and animate spiders."
+        },
+        "spiderCode.randomMovement": {
+          "type": "boolean",
+          "default": true,
+          "description": "Let unassigned spiders wander around the visible editor."
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.10",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8",
+    "@vscode/vsce": "^3.2.1"
+  }
+}
